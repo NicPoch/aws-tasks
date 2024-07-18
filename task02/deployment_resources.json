@@ -4,6 +4,7 @@
       "Statement": [
         {
           "Action": [
+            "lambda:InvokeFunctionUrl",
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
@@ -23,5 +24,26 @@
       "Version": "2012-10-17"
     },
     "resource_type": "iam_policy"
+  },
+  "syndicate-demo-api": {
+    "deploy_stage": "dev",
+    "dependencies": [
+        {
+            "resource_name": "hello_world",
+            "resource_type": "lambda"
+        }
+    ],
+    "resources": {
+        "/hello": {
+            "enable_cors": false,
+            "GET": {
+                "authorization_type": "NONE",
+                "integration_type": "lambda",
+                "default_error_pattern": true,
+                "lambda_name": "hello_world"
+            }
+        }
+    },
+    "resource_type": "api_gateway"
   }
 }
