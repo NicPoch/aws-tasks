@@ -7,11 +7,12 @@
   "runtime": "python3.10",
   "memory": 128,
   "timeout": 100,
-  "lambda_path": "lambdas/hello_world",
+  "lambda_path": "lambdas\\hello_world",
   "dependencies": [],
   "event_sources": [],
   "env_variables": {},
   "publish_version": false,
+  "alias": "${lambdas_alias_name}",
   "url_config": {},
   "ephemeral_storage": 512,
   "logs_expiration": "${logs_expiration}"
